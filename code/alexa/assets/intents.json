@@ -1,0 +1,58 @@
+{
+  "intents": [
+    {
+      "intent": "SpeakIntent"
+    },
+    {
+      "intent": "DrinkIntent"
+    },
+    {
+      "intent": "SingIntent"
+    },
+    {
+      "intent": "hiIntent"
+    },
+    {
+      "intent": "startIntent"
+    },
+    {
+      "intent": "twoIntent"
+    },
+    {
+      "intent": "lifeIntent"
+    },
+    {
+      "intent": "landslideIntent"
+    },
+    {
+      "intent": "eyesIntent"
+    },
+    {
+      "intent": "boyIntent"
+    },
+    {
+      "intent": "highIntent"
+    },
+    {
+      "intent": "killIntent"
+    },
+    {
+      "intent": "AMAZON.YesIntent"
+    },
+    {
+      "intent": "AMAZON.NoIntent"
+    },
+    {
+      "intent": "AMAZON.StopIntent"
+    },
+    {
+      "intent": "AMAZON.CancelIntent"
+    },
+    {
+      "intent": "AMAZON.StartOverIntent"
+    },
+    {
+      "intent": "AMAZON.HelpIntent"
+    }
+  ]
+}

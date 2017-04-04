@@ -1,0 +1,13 @@
+SpeakIntent speak
+DrinkIntent drink
+SingIntent sing
+hiIntent Hi
+hiIntent Sure here is the test version of singing with me
+startIntent Sure let's start
+twoIntent two
+lifeIntent Is this the real life
+landslideIntent Caught in a landslide
+eyesIntent Open your eyes
+boyIntent I'm just a poor boy I need no sympathy
+highIntent Little high little low
+killIntent Mama just killed a man

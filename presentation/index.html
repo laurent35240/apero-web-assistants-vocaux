@@ -1,0 +1,408 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Les Assistants Vocaux</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/league.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<h1>Les assistants vocaux</h1>
+					<blockquote>"OK Google, explain Alexa to me"</blockquote>
+					<p>
+						<small>par <a href="https://github.com/laurent35240">Laurent Clouet</a> / <a href="https://twitter.com/laurent35240">@laurent35240</a></small>
+					</p>
+				</section>
+				<section data-background="img/phone-operator.jpg">
+					<h1 style="color: #ff2c2d">Warning !!!</h1>
+					<h3 style="color: #ff2c2d">
+						L'intégralité de cette présentation pourra être entendue par Google et Amazon.
+					</h3>
+				</section>
+				<section>
+					<section>
+						<h2>Les différents systèmes</h2>
+					</section>
+					<section data-background="img/nabaztag.jpg">
+							<h3 style="color: #1c1e20">2005</h3>
+					</section>
+					<section data-background="img/siri.jpg">
+							<h3>2011</h3>
+					</section>
+					<section data-background="img/alexa-family.jpg">
+							<h3>2014</h3>
+					</section>
+					<section data-background="img/assistant.jpg">
+						<h3 style="color: #1c1e20">2016</h3>
+					</section>
+					<section>
+						<h3>Et plein d'autres</h3>
+						<ul>
+							<li>Cortana (Microsoft)</li>
+							<li>Jarvis (Facebook) avec la voix de Morgan Freeman</li>
+							<li>Matrix voice pour raspberry PI</li>
+							<li>mycroft</li>
+							<li>Jasper</li>
+							<li>...</li>
+						</ul>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>Alexa</h2>
+						<ul>
+							<li>Lancé en novembre 2014</li>
+							<li>Présent dans les produits Amazon</li>
+							<li>Mais aussi dans des produits LG, Lenovo, Huawei, ...</li>
+							<li>Même sur iOS depuis le 16 mars</li>
+							<li>Possibilité de l'intégrer dans ses produits via AVS </li>
+							<li>+ 10 000 skills disponibles</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Amazon echo</h2>
+						<ul>
+							<li>>8 millions de produits vendus ($179)</li>
+							<li>Gestion smart home (lumières, chauffage, serrures)</li>
+							<li>Disponible US, UK, DE</li>
+						</ul>
+						<img width="800" src="img/echo_inside.png">
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>Google Assistant</h2>
+						<ul>
+							<li>Lancé en mai 2016</li>
+							<li>Présent sur Android 6+ (US only), Google Home</li>
+							<li>Prévu pour les prochaines version d'Android TV et Android auto</li>
+							<li>~200 interactions disponibles</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Google Home</h2>
+						<ul>
+							<li>Disponible US ($129) et UK</li>
+							<li>Gestion smart home</li>
+							<li>Multi enceintes et interaction Chromecast</li>
+						</ul>
+						<img src="img/google-home.jpg">
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>Développer une interaction vocale</h2>
+						<h3>Les bonnes pratiques</h3>
+						<p><a href="https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/alexa-skills-kit-voice-design-best-practices">Alexa Skills Kit Voice Design Best Practices</a></p>
+					</section>
+					<section>
+						<h3>Soyez clair si vous attendez une réponse.</h3>
+						<table>
+							<thead>
+							<tr>
+								<th>Don’t</th>
+								<th>Do</th>
+							</tr>
+							</thead>
+							<tbody>
+							<tr>
+								<td>Trivia Challenge. You can choose from the following categories: 80’s Pop Songs, Potent Potables, or European History.</td>
+								<td>Trivia Challenge. Here are your categories: 80’s Pop Songs, Potent Potables, or European History. Which one do you want?</td>
+							</tr>
+							</tbody>
+						</table>
+					</section>
+					<section>
+						<h3>Soyez bref</h3>
+						<table>
+							<thead>
+							<tr>
+								<th>Don’t</th>
+								<th width="50%">Do</th>
+							</tr>
+							</thead>
+							<tbody>
+							<tr>
+								<td>Astrology Daily: There are 12 zodiac signs that I can give you a horoscope for, please tell which one you’d like.</td>
+								<td>Astrology Daily: Horoscope for which sign?</td>
+							</tr>
+							</tbody>
+						</table>
+					</section>
+					<section>
+						<h3>Soyez bref</h3>
+						<table>
+							<thead>
+							<tr>
+								<th>Don’t</th>
+								<th width="50%">Do</th>
+							</tr>
+							</thead>
+							<tbody>
+							<tr>
+								<td>Dairy Shack: What flavor do you want? For chocolate, say Chocolate. For vanilla, say Vanilla. Or for strawberry, say Strawberry.</td>
+								<td>Dairy Shack: Which flavor would you like: Chocolate, Vanilla, or Strawberry?</td>
+							</tr>
+							</tbody>
+						</table>
+					</section>
+					<section>
+						<h3>Ne demandez pas tout d'un coup</h3>
+						<table>
+							<thead>
+							<tr>
+								<th>Don’t</th>
+								<th width="50%">Do</th>
+							</tr>
+							</thead>
+							<tbody>
+							<tr>
+								<td>Date Night: To make a reservation, you need to say the location, time, date and number of people. Please start over.</td>
+								<td>Date Night: Reservation at Haymarket. For what time tonight?<br><br> <em>User: About 7:30.</em></td>
+							</tr>
+							</tbody>
+						</table>
+					</section>
+					<section>
+						<h3>Bien utiliser le text to speech</h3>
+						<table>
+							<thead>
+							<tr class="header">
+								<th align="left">Don't</th>
+								<th align="left">Do</th>
+							</tr>
+							</thead>
+							<tbody>
+							<tr class="odd">
+								<td align="center">
+                  <pre><code>
+Grrrrreeeaaat job,
+you are correct.
+                  </code></pre>
+
+									<p><audio title="Example: Bad Use of Text Formatting" controls="controls">
+										Your browser does not support the <code>audio</code> element.
+										<source src="https://images-na.ssl-images-amazon.com/images/G/01/mobile-apps/dex/ask-customskills/audio/grrrrreeeaaat._TTH_.mp3" type="audio/mp3">
+									</audio>
+									</p>
+								</td>
+								<td align="center">
+                  <pre><code>
+Great &lt;break time="1ms"/&gt; job,
+you are correct.
+                  </code></pre>
+										<p><audio title="Example: Using SSML to Add a pause" controls="controls">
+											Your browser does not support the <code>audio</code> element.
+											<source src="https://images-na.ssl-images-amazon.com/images/G/01/mobile-apps/dex/ask-customskills/audio/great_ssml._TTH_.mp3" type="audio/mp3">
+										</audio>
+										</p>
+								</td>
+							</tr>
+							</tbody>
+						</table>
+					</section>
+					<section>
+						<h3>Bien utiliser le text to speech</h3>
+						<table>
+							<thead>
+							<tr class="header">
+								<th align="left">Don't</th>
+								<th align="left">Do</th>
+							</tr>
+							</thead>
+							<tbody>
+							<tr class="even">
+								<td align="center">
+									<pre><code>Dialing 18001234567</code></pre>
+									<p><audio title="Example: Poor TTS for Unformatted Phone Number" controls="controls">
+										Your browser does not support the <code>audio</code> element.
+										<source src="https://images-na.ssl-images-amazon.com/images/G/01/mobile-apps/dex/ask-customskills/audio/phone_bad._TTH_.mp3" type="audio/mp3">
+									</audio>
+									</p>
+								</td>
+								<td align="center">
+									<pre><code>
+Dialing
+<say-as interpret-as="telephone">
+  18001234567
+</say-as>
+</code></pre>
+										<p><audio title="Example: Using SSML for a Phone Number" controls="controls">
+											Your browser does not support the <code>audio</code> element.
+											<source src="https://images-na.ssl-images-amazon.com/images/G/01/mobile-apps/dex/ask-customskills/audio/phone_ssml._TTH_.mp3" type="audio/mp3">
+										</audio>
+										</p>
+								</td>
+							</tr>
+							</tbody>
+						</table>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>Programmation d'un skill Alexa</h2>
+						<img src="img/alexa_smart_home_ecosystem.jpg">
+					</section>
+					<section>
+						<h3>Définir le mot de réveil (Invocation name)</h3>
+						<p>
+							Par exemple, "Space Geek"
+						</p>
+						<blockquote>
+							Alexa, start Space Geek<br/>
+							Alexa, launch Space Geek<br/>
+							Alexa, ... with Space Geek<br/>
+							Alexa, ask Space Geek to ...<br/>
+						</blockquote>
+					</section>
+					<section>
+						<h3>Définir le schéma d'intention (intent schema)</h3>
+						<pre><code>
+{
+  "intents": [
+    {
+      "intent": "GetNewFactIntent"
+    },
+    {
+      "intent": "AMAZON.HelpIntent"
+    },
+    {
+      "intent": "AMAZON.StopIntent"
+    },
+    {
+      "intent": "AMAZON.CancelIntent"
+    }
+  ]
+}
+						</code></pre>
+					</section>
+          <section>
+            <h3>Définir les phrases d'exemple</h3>
+            <pre><code>
+GetNewFactIntent a fact
+GetNewFactIntent a space fact
+GetNewFactIntent tell me a fact
+GetNewFactIntent tell me a space fact
+GetNewFactIntent give me a fact
+GetNewFactIntent give me a space fact
+GetNewFactIntent tell me trivia
+GetNewFactIntent tell me a space trivia
+GetNewFactIntent give me trivia
+GetNewFactIntent give me a space trivia
+GetNewFactIntent give me some information
+GetNewFactIntent give me some space information
+GetNewFactIntent tell me something
+GetNewFactIntent give me something
+            </code></pre>
+          </section>
+          <section>
+            <h3>Écrire le code de votre fonction lambda</h3>
+            <pre><code>
+var handlers = {
+    'LaunchRequest': function () {
+        this.emit('GetNewFactIntent');
+    },
+    'GetNewFactIntent': function () {
+        var factArr = this.t('FACTS');
+        var factIndex = Math.floor(Math.random() * factArr.length);
+        var randomFact = factArr[factIndex];
+
+        // Create speech output
+        var speechOutput = this.t("GET_FACT_MESSAGE") + randomFact;
+        this.emit(':tellWithCard', speechOutput, this.t("SKILL_NAME"), randomFact)
+    },
+    'AMAZON.HelpIntent': function () {
+        var speechOutput = this.t("HELP_MESSAGE");
+        var reprompt = this.t("HELP_MESSAGE");
+        this.emit(':ask', speechOutput, reprompt);
+    },
+    'AMAZON.CancelIntent': function () {
+        this.emit(':tell', this.t("STOP_MESSAGE"));
+    },
+    'AMAZON.StopIntent': function () {
+        this.emit(':tell', this.t("STOP_MESSAGE"));
+    }
+};
+            </code></pre>
+          </section>
+
+					<section>
+						<h3>Écrire le code de votre fonction lambda</h3>
+						<pre><code>
+exports.handler = function(event, context, callback) {
+    var alexa = Alexa.handler(event, context);
+    alexa.APP_ID = APP_ID;
+    alexa.registerHandlers(handlers);
+    alexa.execute();
+};
+            </code></pre>
+					</section>
+          <section>
+            <h3>Tester</h3>
+            <ul>
+              <li>grunt-aws-lambda</li>
+              <li><a href="https://echosim.io/welcome">Simulateur Amazon Echo</a></li>
+              <li><a href="https://developer.amazon.com">Portail dévelopeur Amazon</a></li>
+            </ul>
+          </section>
+				</section>
+        <section>
+          <h2>Et pour Google Home?</h2>
+          <div class="fragment">
+            <p>Utilisation de <a href="https://console.api.ai/" target="_blank">API.ai</a></p>
+            <ul>
+              <li>Définition mot clé, questions, réponses</li>
+              <li>Possibilité d'appeler un webhook pour traiter la question</li>
+              <li>Gestion de connexion oAuth</li>
+              <li>Peut s'intégrer à Facebook, Slack, Twitter, ...</li>
+            </ul>
+          </div>
+        </section>
+				<section>
+					<section data-background="img/bonaldi.jpg">
+						<h2>Demo</h2>
+					</section>
+				</section>
+        <section data-background="img/question.gif">
+          <h2>Questions ??</h2>
+        </section>
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				history: true,
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>
